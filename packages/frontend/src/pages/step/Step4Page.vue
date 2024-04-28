@@ -1,0 +1,88 @@
+<template>
+	<div>
+		<CheckVault
+			v-if="
+				tokenStore.user.wizardStatus == 'wait_activate_vault' ||
+				tokenStore.user.wizardStatus == 'vault_activating' ||
+				tokenStore.user.wizardStatus == 'vault_activate_failed'
+			"
+		/>
+		<CheckSystem
+			v-if="
+				tokenStore.user.wizardStatus == 'wait_activate_system' ||
+				tokenStore.user.wizardStatus == 'system_activating' ||
+				tokenStore.user.wizardStatus == 'system_activate_failed'
+			"
+		/>
+		<CheckNetwork
+			v-if="
+				tokenStore.user.wizardStatus == 'wait_activate_network' ||
+				tokenStore.user.wizardStatus == 'network_activating' ||
+				tokenStore.user.wizardStatus == 'network_activate_failed'
+			"
+		/>
+
+		<div
+			v-if="
+				tokenStore.user.wizardStatus == 'wait_reset_password' ||
+				tokenStore.user.wizardStatus == 'completed'
+			"
+		>
+			<CheckPassword
+				v-if="tokenStore.pingResult === true"
+				:wizard_succeed="wizard_succeed"
+			/>
+			<CheckDNS
+				v-else
+				:step8Img="step8Img"
+				:step8CertificateImg="step8CertificateImg"
+			/>
+		</div>
+
+		<img :src="step8Img" style="display: none" />
+		<img :src="step8CertificateImg" style="display: none" />
+		<img :src="wizard_succeed" style="display: none" />
+	</div>
+</template>
+
+<script lang="ts" setup>
+import { onMounted, onUnmounted } from 'vue';
+import { useTokenStore } from 'stores/token';
+
+import CheckVault from './status/CheckVault.vue';
+import CheckSystem from './status/CheckSystem.vue';
+import CheckNetwork from './status/CheckNetwork.vue';
+import CheckDNS from './status/CheckDNS.vue';
+import CheckPassword from './status/CheckPassword.vue';
+
+import step8Img from 'assets/wizard_resolutiona.png';
+import step8CertificateImg from 'assets/wizard_resolution.png';
+import wizard_succeed from 'assets/wizard_succeed.png';
+
+const tokenStore = useTokenStore();
+
+let user_info_interval: any = null;
+
+onMounted(async () => {
+	user_info_interval = setInterval(async () => {
+		if (
+			tokenStore.user.wizardStatus == 'wait_reset_password' ||
+			tokenStore.user.wizardStatus == 'completed'
+		) {
+			await tokenStore.ping2();
+			if (tokenStore.user.wizardStatus == 'completed') {
+				clearInterval(user_info_interval);
+				window.location.replace(tokenStore.get_terminus_url!);
+			}
+		} else {
+			await tokenStore.loadData();
+		}
+	}, 2 * 1000);
+});
+
+onUnmounted(() => {
+	if (user_info_interval) {
+		clearInterval(user_info_interval);
+	}
+});
+</script>

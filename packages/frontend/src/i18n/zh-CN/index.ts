@@ -1,0 +1,38 @@
+export default {
+	wizard_welcome: '欢迎来到 Terminus',
+	wizard_continue: '点击任意键继续',
+	step_continue: '下一步',
+	step_label_password: '密码',
+	step_input_placeholder: '请输入 Terminus 的密码',
+	err_cloud_admin: '密码不正确，你可以登录Terminus Space查看首次登录密码。.',
+	err_cloud_sub: '密码不正确，请重新输入或联系管理员',
+	err_selfhosted_admin: '密码不正确，首次登录密码会在安装记录的最后显示',
+	err_selfhosted_sub: '密码不正确，请重新输入或联系管理员',
+	err_learn_more: '了解更多',
+	step_select_language: '选择语言',
+	step_language: '语言',
+	step_select_proxy: '反向代理',
+	step_proxy_text_1: '选择一个反向代理，帮助您在互联网上访问Terminus',
+	step_proxy_text_2: '了解更多 ',
+	step_proxy_text_3: 'Terminus Space 反向代理服务',
+	step_select_region: '选择区域',
+
+	vault_title: '激活 Terminus',
+	vault_content_1: '请使用TermiPass扫描二维码已完成激活',
+	vault_content_2: '请确保手机和Terminus设备在同一网络',
+	system_title: '初始化Terminus',
+	system_content_1: '等待Terminus进行初始化设置',
+	network_title: '网络配置',
+	network_content: '我们正在申请HTTPS证书并进行配置',
+	network_failed_title: '配置失败',
+	network_failed_content: '请在TermiPass上重试',
+	dns_title: 'DNS解析',
+	dns_content_1:
+		'正在等待DNS解析生效。当DNS生效后，你将可以访问自己的Terminus。',
+	dns_content_2: '',
+	dns_failed_title: 'DNS解析失败',
+	dns_failed_content: '请在TermiPass上重试',
+	reset_password_title: '等待重置密码',
+	reset_password_content:
+		'请在手机版TermiPass上设置新的Terminus登录密码。 设置成功后，您刚刚输入的首次登录密码将失效。'
+};

@@ -1,0 +1,133 @@
+<template>
+	<div class="row justify-evenly account_box">
+		<div class="q-pa-md;wrap account_conter" style="word-wrap: break-word">
+			<div class="boot_justify">
+				<q-img src="../../assets/wizard_timeZone.jpg" class="account_img" />
+			</div>
+			<p class="get-text">{{ t('step_select_proxy') }}</p>
+			<p class="account_please_text">
+				{{ t('step_proxy_text_1') }}<br />
+				{{ t('step_proxy_text_2') }} <a>{{ t('step_proxy_text_3') }}</a>
+			</p>
+			<div class="Account_input_from">
+				<p>{{ t('step_select_region') }}</p>
+				<q-select
+					:menu-offset="[0, 4]"
+					dropdown-icon="bi-chevron-down"
+					v-model="regionMode"
+					:options="options"
+					class="Account_input"
+					popup-content-class="options_selected_Account"
+					emit-value
+					map-options
+				>
+					<template v-slot:option="{ itemProps, opt, selected, toggleOption }">
+						<q-item v-bind="itemProps">
+							<q-item-section>
+								<q-item-label>{{ opt.label }}</q-item-label>
+							</q-item-section>
+							<q-item-section side>
+								<q-checkbox
+									:model-value="selected"
+									checked-icon="sym_r_check_circle"
+									unchecked-icon=""
+									indeterminate-icon="help"
+									@update:model-value="toggleOption(opt.label)"
+								/>
+							</q-item-section>
+						</q-item>
+					</template>
+				</q-select>
+			</div>
+		</div>
+	</div>
+</template>
+
+<script lang="ts" setup>
+import { useQuasar } from 'quasar';
+import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+import { useTokenStore } from 'src/stores/token';
+
+import NeedFrpDialog from 'components/NeedFrpDialog.vue';
+import NotNeedFrpDialog from 'components/NotNeedFrpDialog.vue';
+
+const { t } = useI18n();
+const $q = useQuasar();
+const options = [
+	{
+		label: 'Not using a reverse proxy',
+		value: ''
+	},
+	{
+		label: 'Virginia',
+		value: 'Virginia'
+	},
+	{
+		label: 'Singapore',
+		value: 'Singapore'
+	},
+	{
+		label: 'Hong Kong',
+		value: 'Hong Kong'
+	}
+];
+
+const tokenStore = useTokenStore();
+const regionMode = ref('');
+
+let hasExternalIp = false;
+const origin = window.location.origin;
+if (tokenStore.user.selfhosted && origin.indexOf('30180') > -1) {
+	const ip = origin.split(':')[1].slice(2);
+	if (tokenStore.wizard.network.external_ip == ip) {
+		hasExternalIp = true;
+	}
+}
+
+if (hasExternalIp) {
+	regionMode.value = '';
+} else {
+	regionMode.value = tokenStore.wizard.network.frps_region || 'Virginia';
+}
+
+const click = () => {
+	tokenStore.wizard.network.frps_region = regionMode.value;
+	if (regionMode.value) {
+		tokenStore.wizard.network.use_frps = true;
+	} else {
+		tokenStore.wizard.network.use_frps = false;
+	}
+
+	if (tokenStore.wizard.network.use_frps === true) {
+		if (hasExternalIp) {
+			$q.dialog({
+				component: NotNeedFrpDialog
+			}).onOk(() => {
+				console.log('OK');
+				tokenStore.setStep(4);
+			});
+			return true;
+		} else {
+			tokenStore.setStep(4);
+			return false;
+		}
+	} else {
+		if (hasExternalIp) {
+			tokenStore.setStep(4);
+			return false;
+		} else {
+			$q.dialog({
+				component: NeedFrpDialog
+			}).onOk(() => {
+				tokenStore.setStep(4);
+			});
+			return true;
+		}
+	}
+};
+
+defineExpose({
+	click
+});
+</script>
