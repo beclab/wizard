@@ -193,9 +193,8 @@ export const useTokenStore = defineStore('token', {
 					location: 'Singapore'
 				},
 				network: {
-					use_frps: false,
-					external_ip: null,
-					frps_region: ''
+					enable_tunnel: false,
+					external_ip: null
 				}
 			});
 		},
