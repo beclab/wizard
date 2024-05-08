@@ -57,24 +57,16 @@ const $q = useQuasar();
 const options = [
 	{
 		label: 'Not using a reverse proxy',
-		value: ''
+		value: true
 	},
 	{
-		label: 'Virginia',
-		value: 'Virginia'
-	},
-	{
-		label: 'Singapore',
-		value: 'Singapore'
-	},
-	{
-		label: 'Hong Kong',
-		value: 'Hong Kong'
+		label: 'Use Cloudflare Tunnel',
+		value: false
 	}
 ];
 
 const tokenStore = useTokenStore();
-const regionMode = ref('');
+const regionMode = ref(false);
 
 let hasExternalIp = false;
 const origin = window.location.origin;
@@ -86,20 +78,19 @@ if (tokenStore.user.selfhosted && origin.indexOf('30180') > -1) {
 }
 
 if (hasExternalIp) {
-	regionMode.value = '';
+	regionMode.value = true;
 } else {
-	regionMode.value = tokenStore.wizard.network.frps_region || 'Virginia';
+	regionMode.value = false;
 }
 
 const click = () => {
-	tokenStore.wizard.network.frps_region = regionMode.value;
 	if (regionMode.value) {
-		tokenStore.wizard.network.use_frps = true;
+		tokenStore.wizard.network.enable_tunnel = true;
 	} else {
-		tokenStore.wizard.network.use_frps = false;
+		tokenStore.wizard.network.enable_tunnel = false;
 	}
 
-	if (tokenStore.wizard.network.use_frps === true) {
+	if (tokenStore.wizard.network.enable_tunnel === true) {
 		if (hasExternalIp) {
 			$q.dialog({
 				component: NotNeedFrpDialog

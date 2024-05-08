@@ -54,8 +54,7 @@ const click = async (): Promise<boolean> => {
 	if (tokenStore.user.selfhosted) {
 		tokenStore.setStep(3);
 	} else {
-		tokenStore.wizard.network.use_frps = false;
-		tokenStore.wizard.network.frps_region = '';
+		tokenStore.wizard.network.enable_tunnel = false;
 		tokenStore.setStep(4);
 	}
 
