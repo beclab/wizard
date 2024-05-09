@@ -82,7 +82,7 @@ export default defineComponent({
 					state.value = 'CheckL4Proxy';
 					request_https_certificate.value = true;
 				} else if (data.state == 6) {
-					state.value = 'CheckFrpAgent';
+					state.value = 'CheckAgent';
 					request_https_certificate.value = true;
 				} else if (data.state == 7) {
 					state.value = 'GenerateCert';

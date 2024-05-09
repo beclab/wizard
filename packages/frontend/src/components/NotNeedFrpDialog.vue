@@ -9,7 +9,8 @@
 			/>
 
 			<div class="dialog-desc" style="textalign: left">
-				If you have a fixed IP, using FRP may reduce the access speed.
+				If you have a fixed IP, using Cloudflare Tunnel may reduce the access
+				speed.
 			</div>
 
 			<terminus-dialog-footer

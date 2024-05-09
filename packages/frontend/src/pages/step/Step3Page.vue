@@ -57,16 +57,16 @@ const $q = useQuasar();
 const options = [
 	{
 		label: 'Not using a reverse proxy',
-		value: true
+		value: false
 	},
 	{
 		label: 'Use Cloudflare Tunnel',
-		value: false
+		value: true
 	}
 ];
 
 const tokenStore = useTokenStore();
-const regionMode = ref(false);
+const regionMode = ref(true);
 
 let hasExternalIp = false;
 const origin = window.location.origin;
@@ -78,9 +78,9 @@ if (tokenStore.user.selfhosted && origin.indexOf('30180') > -1) {
 }
 
 if (hasExternalIp) {
-	regionMode.value = true;
-} else {
 	regionMode.value = false;
+} else {
+	regionMode.value = true;
 }
 
 const click = () => {
