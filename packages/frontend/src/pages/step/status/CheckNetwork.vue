@@ -18,17 +18,6 @@
 					{{ t('network_content') }}
 				</p>
 			</div>
-			<div>
-				<p class="account_please_text please_text">
-					{{
-						tokenStore.wizard.network.use_frps
-							? 'Utilizing the FRP Service in the ' +
-							  tokenStore.wizard.network.frps_region +
-							  ' Region'
-							: ''
-					}}
-				</p>
-			</div>
 			<template v-if="state">
 				<p class="State_text">State {{ state }}</p>
 			</template>
@@ -93,7 +82,7 @@ export default defineComponent({
 					state.value = 'CheckL4Proxy';
 					request_https_certificate.value = true;
 				} else if (data.state == 6) {
-					state.value = 'CheckFrpAgent';
+					state.value = 'CheckAgent';
 					request_https_certificate.value = true;
 				} else if (data.state == 7) {
 					state.value = 'GenerateCert';
@@ -102,7 +91,7 @@ export default defineComponent({
 					state.value = 'ConfigureIngressHTTPs';
 					request_https_certificate.value = true;
 				} else if (data.state == 9) {
-					state.value = 'CheckHTTPs';
+					state.value = 'CheckTunnel';
 					request_https_certificate.value = true;
 				} else if (data.state == 3) {
 					state.value = 'Failed';
