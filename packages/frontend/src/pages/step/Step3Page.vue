@@ -7,7 +7,12 @@
 			<p class="get-text">{{ t('step_select_proxy') }}</p>
 			<p class="account_please_text">
 				{{ t('step_proxy_text_1') }}<br />
-				{{ t('step_proxy_text_2') }} <a>{{ t('step_proxy_text_3') }}</a>
+				{{ t('step_proxy_text_2') }}
+				<a
+					href="https://docs.jointerminus.com/overview/terminus/network.html#setup-reverse-proxy"
+					target="_blank"
+					>{{ t('step_proxy_text_3') }}</a
+				>
 			</p>
 			<div class="Account_input_from">
 				<p>{{ t('step_select_region') }}</p>

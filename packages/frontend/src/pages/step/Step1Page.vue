@@ -23,7 +23,12 @@
 				/>
 				<p class="failFlag" v-if="failFlag">
 					{{ t(failInfo.message) }}
-					<span v-if="failInfo.showLink">{{ t('err_learn_more') }}.</span>
+					<a
+						v-if="failInfo.showLink"
+						href="https://docs.jointerminus.com/how-to/terminus/setup/wizard.html#enter-password"
+						target="_blank"
+						>{{ t('err_learn_more') }}.</a
+					>
 				</p>
 			</div>
 		</div>
