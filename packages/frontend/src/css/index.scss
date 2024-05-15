@@ -313,9 +313,10 @@
 					margin-top: 8px;
 					font-size: 12px;
 
-					span {
+					a {
 						color: #3377ff;
 						cursor: pointer;
+						text-decoration: none;
 					}
 				}
 
@@ -376,6 +377,12 @@
 				}
 			}
 
+			.active-tip {
+				border-radius: 8px;
+				background: #F6F6F6;
+				font-size: 10px;
+			}
+
 			.State_text {
 				font-family: 'Roboto';
 				font-style: normal;
@@ -403,7 +410,7 @@
 			.qrcode_scanning {
 				display: flex;
 				justify-content: center;
-				margin-top: multiple(32px, $multiple-num);
+				margin-top: multiple(20px, $multiple-num);
 
 				.qrcode_image_itme {
 					padding: multiple(0px, $multiple-num) multiple(0px, $multiple-num) !important;

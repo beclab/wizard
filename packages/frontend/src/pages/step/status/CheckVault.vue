@@ -1,6 +1,6 @@
 <template>
 	<div class="row justify-evenly account_box">
-		<div class="q-pa-md;wrap account_conter" style="word-wrap: break-word">
+		<div class="q-pa-md wrap account_conter" style="word-wrap: break-word">
 			<div class="boot_justify">
 				<animationPage
 					:picture="wizard_system"
@@ -15,12 +15,15 @@
 				<span @click="openTip">{{ t('err_learn_more') }}</span
 				><br />
 			</p>
-			<p
-				v-if="tokenStore.user.selfhosted"
-				class="account_please_text please_text"
+
+			<div
+				class="active-tip row items-center justify-center text-grey-8 q-px-sm q-py-xs q-mt-md"
+				v-if="isAdminAccount"
 			>
-				{{ t('vault_content_2') }}
-			</p>
+				<q-icon class="q-mr-sm" name="sym_r_error" />
+				<span>{{ t('vault_content_2') }}</span>
+			</div>
+
 			<div class="qrcode_scanning">
 				<div class="qrcode_scanning_itme">
 					<qrcode-vue :value="url" class="qrcode_img" level="L"></qrcode-vue>
@@ -31,7 +34,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 import { useQuasar } from 'quasar';
 import { useI18n } from 'vue-i18n';
 import QrcodeVue from 'qrcode.vue';
@@ -55,6 +58,14 @@ export default defineComponent({
 		let base_url = window.location.origin + '/server';
 
 		tokenStore.wizard.url = base_url;
+
+		const isAdminAccount = computed(() => {
+			const origin = window.location.origin;
+			if (tokenStore.user.selfhosted && origin.indexOf('30180') > -1) {
+				return true;
+			}
+			return false;
+		});
 
 		const url = ref<string>(
 			'active_vault://' +
@@ -84,6 +95,7 @@ export default defineComponent({
 			openTip,
 			wizard_systema,
 			wizard_system,
+			isAdminAccount,
 			t
 		};
 	}
