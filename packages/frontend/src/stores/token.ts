@@ -112,7 +112,11 @@ export const useTokenStore = defineStore('token', {
 			try {
 				const data: any = await axios.get(
 					this.url + '/bfl/info/v1/terminus-info',
-					{}
+					{
+						params: {
+							t: new Date().getTime()
+						}
+					}
 				);
 				if (data.wizardStatus) {
 					this.user = data;
@@ -139,7 +143,12 @@ export const useTokenStore = defineStore('token', {
 			}
 			try {
 				const data: any = await axios.get(
-					this.get_auth_url + '/bfl/info/v1/terminus-info'
+					this.get_auth_url + '/bfl/info/v1/terminus-info',
+					{
+						params: {
+							t: new Date().getTime()
+						}
+					}
 				);
 				if (data.wizardStatus) {
 					this.user = data;

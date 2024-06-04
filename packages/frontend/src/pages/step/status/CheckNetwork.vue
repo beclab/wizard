@@ -67,7 +67,11 @@ export default defineComponent({
 			try {
 				const data: any = await axios.get(
 					tokenStore.url + '/bfl/settings/v1alpha1/ssl/task-state',
-					{}
+					{
+						params: {
+							t: new Date().getTime()
+						}
+					}
 				);
 
 				https_certificate_ready.value = true;
