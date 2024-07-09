@@ -23,7 +23,7 @@ module.exports = configure(function (ctx) {
 			'index.scss',
 			ctx.dev ? 'font.dev.scss' : 'font.pro.scss'
 		],
-		extras: ['material-icons', 'bootstrap-icons'],
+		extras: ['material-icons'],
 		vendor: {
 			remove: ['@bytetrade/ui']
 		},
