@@ -9,7 +9,6 @@
 				<p>{{ t('step_language') }}</p>
 				<q-select
 					:menu-offset="[0, 4]"
-					dropdown-icon="sym_r_keyboard_arrow_down"
 					v-model="tokenStore.wizard.system.language"
 					:options="options"
 					dense
