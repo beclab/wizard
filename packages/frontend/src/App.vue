@@ -9,6 +9,8 @@ import { useTokenStore } from './stores/token';
 export default defineComponent({
 	name: 'App',
 	async preFetch(): Promise<any> {
+		if (document.getElementById('Loading'))
+			document.getElementById('Loading')?.remove();
 		const tokenStore = useTokenStore();
 
 		return new Promise((resolve) => {

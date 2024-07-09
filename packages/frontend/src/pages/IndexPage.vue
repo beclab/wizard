@@ -82,7 +82,7 @@
 									v-if="tokenStore.step > 2"
 									:ripple="false"
 									round
-									icon="bi-arrow-left"
+									icon="sym_r_arrow_left_alt"
 									@click="stepperPrevious"
 									:class="[
 										tokenStore.step > 1
