@@ -18,13 +18,13 @@
 				<p>{{ t('step_select_region') }}</p>
 				<q-select
 					:menu-offset="[0, 4]"
-					dropdown-icon="sym_r_keyboard_arrow_down"
 					v-model="regionMode"
 					:options="options"
 					class="Account_input"
 					popup-content-class="options_selected_Account"
 					emit-value
 					map-options
+					hide-dropdown-icon
 				>
 					<template v-slot:option="{ itemProps, opt, selected, toggleOption }">
 						<q-item v-bind="itemProps">
