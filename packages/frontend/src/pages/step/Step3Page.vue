@@ -18,7 +18,7 @@
 				<p>{{ t('step_select_region') }}</p>
 				<q-select
 					:menu-offset="[0, 4]"
-					dropdown-icon="bi-chevron-down"
+					dropdown-icon="sym_r_keyboard_arrow_down"
 					v-model="regionMode"
 					:options="options"
 					class="Account_input"
