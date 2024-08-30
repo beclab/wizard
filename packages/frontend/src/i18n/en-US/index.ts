@@ -1,49 +1,40 @@
 export default {
 	wizard_welcome: 'Welcome to Terminus',
-	wizard_continue: 'Click any key to continue',
+	wizard_continue: 'Press any key to continue',
 	step_continue: 'Continue',
 	step_label_password: 'Password',
-	step_input_placeholder: 'Please enter your password for Terminus',
+	step_input_placeholder: 'Enter your Terminus password',
 	err_cloud_admin:
-		'The password entered is incorrect. You can log in to Terminus Space to view the initial login password.',
-	err_cloud_sub:
-		'The password entered is incorrect. Please try again or contact your administrator.',
+		'Incorrect password. Find your initial password in Terminus Space.',
+	err_cloud_sub: 'Incorrect password. Try again or contact your administrator.',
 	err_selfhosted_admin:
-		'The password entered is incorrect. The initial login password is displayed at the end of the installation log.',
+		'Incorrect password. Check the end of the installation log for your initial password.',
 	err_selfhosted_sub:
-		'The password entered is incorrect. Please try again or contact your administrator.',
-	err_learn_more: 'Learn More',
-	step_select_language: 'Select Language',
+		'Incorrect password. Try again or contact your administrator.',
+	err_learn_more: 'Learn more',
+	step_select_language: 'Select language',
 	step_language: 'Language',
-	step_select_proxy: 'Select A Reverse Proxy',
-	step_proxy_text_1:
-		'Choose a Reverse Proxy to Facilitate Your Access to Terminus on the Internet.',
+	step_select_proxy: 'Select a reverse proxy',
+	step_proxy_text_1: 'Select a reverse proxy to access Terminus on internet ',
 	step_proxy_text_2: 'Learn more about',
-	step_proxy_text_3: 'Terminus Space Reverse Proxy',
-	step_select_region: 'Select Region',
-
+	step_proxy_text_3: 'Terminus Space reverse proxy',
+	step_select_region: 'Select region',
 	vault_title: 'Activate Terminus',
-	vault_content_1:
-		'Please complete the activation by scanning the QR code with TermiPass.',
+	vault_content_1: 'Scan the QR code with TermiPass to complete the activation',
 	vault_content_2:
-		'Please ensure that your smartphone and Terminus device are on the same network.',
+		'Ensure your smartphone and Terminus device are on the same network',
 	system_title: 'Initialize Terminus',
-	system_content_1: 'Awaiting Terminus Initialization',
-	network_title: 'Network Configuration',
-	network_content:
-		'We are in the process of applying for an HTTPS certificate and configuring it',
-	network_failed_title: 'Configuration Failed',
-	network_failed_content: 'Please retry on TermiPass',
-
-	dns_title: 'DNS Resolution',
-	dns_content_1:
-		'Waiting for DNS resolution to take effect. When the DNS takes effect, you will be able to',
-	dns_content_2: 'access your own Terminus at',
-
-	dns_failed_title: 'DNS Resolution Failed',
-	dns_failed_content: 'Please retry on TermiPass',
-
-	reset_password_title: 'Awaiting Password Reset',
+	system_content_1: 'Initializing Terminus',
+	network_title: 'Network configuration',
+	network_content: 'Applying for and configuring HTTPS certificate',
+	network_failed_title: 'Configuration failed',
+	network_failed_content: 'Retry on TermiPass',
+	dns_title: 'DNS resolution',
+	dns_content_1: 'Configuring DNS resolution...',
+	dns_content_2: 'Once complete, access Terminus at',
+	dns_failed_title: 'DNS resolution failed',
+	dns_failed_content: 'Retry on TermiPass',
+	reset_password_title: 'Resetting password...',
 	reset_password_content:
-		'Please set a new Terminus login password in the mobile version of TermiPass. Upon successful setup, the initial login password you just entered will become invalid.'
+		'Create a new Terminus login password in TermiPass app. This will invalidate your initial password.'
 };
