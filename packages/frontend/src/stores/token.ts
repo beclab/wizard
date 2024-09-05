@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
+import { i18n } from '../boot/i18n';
 import { Token } from '@bytetrade/core';
 import { Encoder } from 'src/utils/encoder';
 
@@ -189,7 +190,7 @@ export const useTokenStore = defineStore('token', {
 				password: '',
 				url: '',
 				system: {
-					language: 'English',
+					language: i18n.global.locale.value,
 					location: 'Singapore'
 				},
 				network: {

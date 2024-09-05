@@ -11,9 +11,11 @@
 					:menu-offset="[0, 4]"
 					v-model="tokenStore.wizard.system.language"
 					:options="options"
+					emit-value
+					map-options
 					dense
-					readonly
 					hide-dropdown-icon
+					@update:model-value="updateLanguage"
 					class="Account_input"
 					popup-content-class="options_selected_Account"
 					style="background: #f6f6f6"
@@ -21,7 +23,7 @@
 					<template v-slot:option="{ itemProps, opt, selected, toggleOption }">
 						<q-item v-bind="itemProps">
 							<q-item-section>
-								<q-item-label>{{ opt }}</q-item-label>
+								<q-item-label>{{ opt.label }}</q-item-label>
 							</q-item-section>
 							<q-item-section side>
 								<q-checkbox
@@ -41,13 +43,27 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { useTokenStore } from 'src/stores/token';
+import { i18n } from '../../boot/i18n';
 
 const { t } = useI18n();
 const tokenStore = useTokenStore();
-let options = ref<string[]>(['English']);
+let options = ref<{ label: string; value: string }[]>([
+	{
+		label: 'English',
+		value: 'en-US'
+	},
+	{
+		label: '中文（简体）',
+		value: 'zh-CN'
+	}
+]);
+
+const updateLanguage = (value: 'en-US' | 'zh-CN') => {
+	i18n.global.locale.value = value;
+};
 
 const click = async (): Promise<boolean> => {
 	if (tokenStore.user.selfhosted) {
