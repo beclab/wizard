@@ -5,6 +5,8 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { useTokenStore } from './stores/token';
+import { supportLanguages } from './i18n';
+import { i18n } from './boot/i18n';
 
 export default defineComponent({
 	name: 'App',
@@ -25,6 +27,16 @@ export default defineComponent({
 		const tokenStore = useTokenStore();
 		const host = window.location.origin;
 		tokenStore.setUrl(host);
+
+		let terminusLanguage = navigator.language;
+
+		console.log(terminusLanguage);
+
+		if (terminusLanguage) {
+			if (supportLanguages.find((e) => e.value == terminusLanguage)) {
+				i18n.global.locale.value = terminusLanguage as any;
+			}
+		}
 
 		return {};
 	}
