@@ -27,7 +27,7 @@ export default {
 	network_failed_content: '在 TermiPass 上重试',
 	dns_title: 'DNS 解析',
 	dns_content_1: '正在配置 DNS 解析……',
-	dns_content_2: '完成后，请于以下网址访问 Terminus',
+	dns_content_2: '完成后，使用该网址访问 Terminus：',
 	dns_failed_title: 'DNS 解析失败',
 	dns_failed_content: '在 TermiPass 上重试',
 	reset_password_title: '正在重置密码……',
