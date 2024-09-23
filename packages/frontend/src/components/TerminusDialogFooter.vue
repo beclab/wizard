@@ -23,12 +23,14 @@
 			dense
 			class="but-creat row justify-center items-center q-px-md q-mr-sm"
 		>
-			Loading
+			{{ t('loading') }}
 		</q-item>
 	</q-card-actions>
 </template>
 
 <script lang="ts" setup>
+import { useI18n } from 'vue-i18n';
+
 defineProps({
 	okText: {
 		type: String,
@@ -51,6 +53,8 @@ defineProps({
 		required: false
 	}
 });
+
+const { t } = useI18n();
 
 const emit = defineEmits(['close', 'submit']);
 
