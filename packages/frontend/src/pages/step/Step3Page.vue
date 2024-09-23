@@ -61,11 +61,11 @@ const { t } = useI18n();
 const $q = useQuasar();
 const options = [
 	{
-		label: 'Not using a reverse proxy',
+		label: t('use_not_reverse_proxy'),
 		value: false
 	},
 	{
-		label: 'Use Cloudflare Tunnel',
+		label: t('use_reverse_proxy'),
 		value: true
 	}
 ];

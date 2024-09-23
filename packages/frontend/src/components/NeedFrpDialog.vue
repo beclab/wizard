@@ -9,8 +9,7 @@
 			/>
 
 			<div class="dialog-desc" style="textalign: left">
-				You may not be able to access this Terminus in other network
-				environments.
+				{{ t('message_reverse_proxy') }}
 			</div>
 
 			<terminus-dialog-footer
@@ -27,12 +26,14 @@
 <script lang="ts" setup>
 import { useDialogPluginComponent } from 'quasar';
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 import TerminusDialogBar from './TerminusDialogBar.vue';
 import TerminusDialogFooter from './TerminusDialogFooter.vue';
 
 const { dialogRef, onDialogOK, onDialogHide } = useDialogPluginComponent();
 
+const { t } = useI18n();
 const show = ref(true);
 const submit = async () => {
 	onDialogOK();

@@ -32,5 +32,12 @@ export default {
 	dns_failed_content: '在 TermiPass 上重试',
 	reset_password_title: '正在重置密码……',
 	reset_password_content:
-		'在 TermiPass 应用中创建新的 Terminus 登录密码。这将使初始密码无效。'
+		'在 TermiPass 应用中创建新的 Terminus 登录密码。这将使初始密码无效。',
+
+	use_reverse_proxy: '使用反向代理',
+	use_not_reverse_proxy: '不使用反向代理',
+	message_need_frp: '网络环境已变化。建议使用反向代理访问 Terminus。',
+	message_not_need_frp: '如果您有固定 IP，无需选择反向代理。',
+	close: '关闭',
+	loading: '加载中'
 };

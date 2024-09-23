@@ -36,5 +36,13 @@ export default {
 	dns_failed_content: 'Retry on TermiPass',
 	reset_password_title: 'Resetting password...',
 	reset_password_content:
-		'Create a new Terminus login password in TermiPass app. This will invalidate your initial password.'
+		'Create a new Terminus login password in TermiPass app. This will invalidate your initial password.',
+
+	use_reverse_proxy: 'Use a reverse proxy',
+	use_not_reverse_proxy: 'Not using a reverse proxy',
+	message_reverse_proxy:
+		'Reverse proxy is required for access to Terminus in a different network.',
+	message_not_need_frp: 'If you have a public IP, no reverse proxy is needed.',
+	close: 'Close',
+	loading: 'Loading'
 };
