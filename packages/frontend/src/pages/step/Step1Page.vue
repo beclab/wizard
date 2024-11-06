@@ -25,7 +25,7 @@
 					{{ t(failInfo.message) }}
 					<a
 						v-if="failInfo.showLink"
-						href="https://docs.jointerminus.com/how-to/terminus/setup/wizard.html#enter-password"
+						href="https://docs.olares.xyz/manual/get-started/activate-olares.html"
 						target="_blank"
 						>{{ t('err_learn_more') }}.</a
 					>

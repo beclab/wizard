@@ -1,19 +1,19 @@
-Arguments: 
+Arguments:
   /usr/local/bin/node /usr/local/bin/yarn
 
-PATH: 
+PATH:
   /usr/local/bin:/usr/local/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
 
-Yarn version: 
+Yarn version:
   1.22.19
 
-Node version: 
+Node version:
   16.14.0
 
-Platform: 
+Platform:
   darwin x64
 
-Trace: 
+Trace:
   Error: http://npm.ixiaochuan.cn/@desktop%2fcore: no such package available
       at Request.params.callback [as _callback] (/usr/local/lib/node_modules/yarn/lib/cli.js:66145:18)
       at Request.self.callback (/usr/local/lib/node_modules/yarn/lib/cli.js:140890:22)
@@ -26,12 +26,12 @@ Trace:
       at endReadableNT (node:internal/streams/readable:1346:12)
       at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
-npm manifest: 
+npm manifest:
   {
       "name": "@desktop/frontend",
       "version": "0.0.1",
-      "description": "Terminus OS Launcher",
-      "productName": "Terminus",
+      "description": "Olares OS Launcher",
+      "productName": "Olares",
       "author": "Peng Peng <billpengpeng@gmail.com>",
       "private": true,
       "scripts": {
@@ -87,8 +87,8 @@ npm manifest:
       }
   }
 
-yarn manifest: 
+yarn manifest:
   No manifest
 
-Lockfile: 
+Lockfile:
   No lockfile
