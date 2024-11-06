@@ -9,7 +9,7 @@
 				{{ t('step_proxy_text_1') }}<br />
 				{{ t('step_proxy_text_2') }}
 				<a
-					href="https://docs.jointerminus.com/overview/terminus/network.html#setup-reverse-proxy"
+					href="https://docs.olares.xyz/manual/get-started/activate-olares.html"
 					target="_blank"
 					>{{ t('step_proxy_text_3') }}</a
 				>

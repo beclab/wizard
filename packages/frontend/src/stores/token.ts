@@ -185,7 +185,7 @@ export const useTokenStore = defineStore('token', {
 		},
 		async loadWizard() {
 			this.setWizard({
-				step: 1,
+				step: 3,
 				username: '',
 				password: '',
 				url: '',
