@@ -88,12 +88,12 @@ onMounted(async () => {
 			}
 		} else {
 			await tokenStore.loadData();
-			if (
-				last_set_wait_reset_password_time == 0 &&
-				tokenStore.user.wizardStatus == 'wait_reset_password'
-			) {
-				last_set_wait_reset_password_time = new Date().getTime();
-			}
+		}
+		if (
+			last_set_wait_reset_password_time == 0 &&
+			tokenStore.user.wizardStatus == 'wait_reset_password'
+		) {
+			last_set_wait_reset_password_time = new Date().getTime();
 		}
 	}, 2 * 1000);
 });
