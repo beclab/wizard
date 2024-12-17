@@ -47,7 +47,7 @@
 
 <script lang="ts" setup>
 import { onMounted, onUnmounted } from 'vue';
-import { useTokenStore } from 'stores/token';
+import { useTokenStore } from '../../stores/token';
 
 import CheckVault from './status/CheckVault.vue';
 import CheckSystem from './status/CheckSystem.vue';
@@ -63,19 +63,35 @@ const tokenStore = useTokenStore();
 
 let user_info_interval: any = null;
 
+let last_set_wait_reset_password_time = 0;
+
 onMounted(async () => {
 	user_info_interval = setInterval(async () => {
 		if (
 			tokenStore.user.wizardStatus == 'wait_reset_password' ||
 			tokenStore.user.wizardStatus == 'completed'
 		) {
-			await tokenStore.ping2();
+			const now = new Date().getTime();
+			if (
+				tokenStore.user.wizardStatus == 'wait_reset_password' &&
+				last_set_wait_reset_password_time > 0 &&
+				now - last_set_wait_reset_password_time > 75 * 1000
+			) {
+				await tokenStore.ping2();
+			}
+
 			if (tokenStore.user.wizardStatus == 'completed') {
 				clearInterval(user_info_interval);
 				window.location.replace(tokenStore.get_terminus_url!);
 			}
 		} else {
 			await tokenStore.loadData();
+			if (
+				last_set_wait_reset_password_time == 0 &&
+				tokenStore.user.wizardStatus == 'wait_reset_password'
+			) {
+				last_set_wait_reset_password_time = new Date().getTime();
+			}
 		}
 	}, 2 * 1000);
 });
