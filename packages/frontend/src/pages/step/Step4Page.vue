@@ -71,13 +71,15 @@ onMounted(async () => {
 			tokenStore.user.wizardStatus == 'wait_reset_password' ||
 			tokenStore.user.wizardStatus == 'completed'
 		) {
+			const pingResult = await tokenStore.ping2();
 			const now = new Date().getTime();
 			if (
 				tokenStore.user.wizardStatus == 'wait_reset_password' &&
 				last_set_wait_reset_password_time > 0 &&
-				now - last_set_wait_reset_password_time > 75 * 1000
+				now - last_set_wait_reset_password_time > 75 * 1000 &&
+				pingResult
 			) {
-				await tokenStore.ping2();
+				tokenStore.pingResult = true;
 			}
 
 			if (tokenStore.user.wizardStatus == 'completed') {
