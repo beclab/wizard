@@ -144,7 +144,6 @@ export const useTokenStore = defineStore('token', {
 				);
 				if (data.wizardStatus) {
 					this.user = data;
-					this.pingResult = true;
 					return true;
 				} else {
 					console.error(data);
