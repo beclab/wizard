@@ -67,7 +67,8 @@ const updateLanguage = (value: 'en-US' | 'zh-CN') => {
 
 const click = async (): Promise<boolean> => {
 	if (tokenStore.user.selfhosted) {
-		tokenStore.setStep(3);
+		tokenStore.wizard.network.enable_tunnel = true;
+		tokenStore.setStep(4);
 	} else {
 		tokenStore.wizard.network.enable_tunnel = false;
 		tokenStore.setStep(4);
