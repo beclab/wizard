@@ -75,7 +75,7 @@ onMounted(async () => {
 			if (
 				tokenStore.user.wizardStatus == 'wait_reset_password' &&
 				last_set_wait_reset_password_time > 0 &&
-				now - last_set_wait_reset_password_time > 90 * 1000
+				now - last_set_wait_reset_password_time > 75 * 1000
 			) {
 				await tokenStore.ping2();
 			}
